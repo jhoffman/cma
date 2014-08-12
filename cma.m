@@ -47,8 +47,12 @@ for i = block_size:block_size:T
     if mod(i/expt.block_size, 10) == 0
         fprintf('.');
     end
-    waitbar(i/T, wfig, 'Continuous Domain Adaptation');
+    time_so_far = toc(t_osvd);
+    iter = i/block_size;
+    max_iter = T / block_size;
+    expected_time = time_so_far / iter * max_iter;
+    waitbar(i/T, wfig, sprintf('Continuous Domain Adaptation: %2.1f/%2.1f (s)', time_so_far, expected_time));
 end
 close(wfig);
-fprintf('done.%f(s)\n',toc(t_osvd));
+fprintf('done.%f(s)\n',time_so_far);
 end

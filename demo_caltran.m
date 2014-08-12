@@ -2,6 +2,12 @@ function results = demo_caltran(feature_type, start_index)
 
 %% Parameters
 % Edit to include the correct parameters for experimental setup
+if nargin < 1
+    feature_type = 'gist';
+end
+if nargin < 2
+    start_index = 350;
+end
 expt = config_caltran(feature_type, start_index);
 %norm_type = expt.norm_type;
 %ns = expt.ns; % number of training data points
